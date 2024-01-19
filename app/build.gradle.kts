@@ -5,16 +5,29 @@ plugins {
 
 android {
     namespace = "com.example.youtubeapi"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.youtubeapi"
         minSdk = 27
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"AIzaSyAXGmSYpKNiCed7x7-lQDMMc5llEoEyPa8\""
+        )
+
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"https://www.googleapis.com/youtube/v3/\""
+        )
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -37,7 +50,8 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        compose = true
+        viewBinding = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -81,4 +95,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //bindingDelegate
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9")
 }
